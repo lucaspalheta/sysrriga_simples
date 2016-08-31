@@ -129,6 +129,8 @@ h5, h6          { font-weight: bolder }
         float: left;
         overflow: hidden;
         z-index: 9999;
+		box-shadow: 1px 1px 20px #454545;
+		
     }
 
     header .logo{
@@ -632,6 +634,7 @@ h5, h6          { font-weight: bolder }
         min-height: 100px;
         padding: 0;
         position: relative;
+		
     }
     header .logo{
         margin: 40px 0 0 30px;

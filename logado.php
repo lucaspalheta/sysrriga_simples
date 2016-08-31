@@ -28,7 +28,10 @@ $logado = $_SESSION['nome_usuario'];
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
-	
+	<script src="jquery-2.1.4.min.js"></script>
+	<!--google-->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	
 	<script>
 		$(function(){
@@ -40,7 +43,35 @@ $logado = $_SESSION['nome_usuario'];
 });
 	</script>
 	
+
 	
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+	
+	
+	<script type="text/javascript">
+      google.charts.load('current', {'packages':['geochart']});
+      google.charts.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Country', 'Popularity'],
+          ['Germany', 200],
+          ['United States', 300],
+          ['Brazil', 400],
+          ['Canada', 500],
+          ['France', 600],
+          ['RU', 700]
+        ]);
+
+        var options = {};
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        chart.draw(data, options);
+      }
+    </script>
 </head>
 <body>
 
@@ -103,11 +134,16 @@ $logado = $_SESSION['nome_usuario'];
 			</form>
 			
 			<h1>Nessa área vai alguns gráficos</h1>
+			
+			<div id="chart_lines" style="width: 900px; height: 500px;"></div>
+			
+			<div id="regions_div" style="width: 900px; height: 500px;"></div>
 						</center>
 				
 								
 						
 	</section><!-- end main -->
+	
 	
 </body>
 </html>

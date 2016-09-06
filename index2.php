@@ -124,7 +124,8 @@ $logado = $_SESSION['nome_usuario'];
 
 		<center><img src="img/sistema_irrigacao.jpg" usemap="#map"></center>
 		<map name="map">
-			<area shape="rect" coords="328,500,715,650" href="cadastros/cadastrar_tecnico.php#formulario_propriedade" target="janela"/>
+			<area shape="poly" coords="386,301,394,311,190,421,184,412" href="cadastros/cadastrar_propriedade.php#formulario_propriedade" target="janela"/>
+			<area shape="poly" coords="87,299,99,288,128,290,128,296,102,296,89,306" href="cadastros/cadastrar_tecnico.php#formulario_tecnico" target="janela"/>
 		</map>
 			
 

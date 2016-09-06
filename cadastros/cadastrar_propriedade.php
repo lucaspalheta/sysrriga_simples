@@ -13,8 +13,9 @@
 </head>
 
 <body>
-<form class="container form-horizontal  form-border" id="formulario_tecnico" role="form" method="post" action="formulario_tecnico.php">
-<center><p><h1>Técnico</h1></p></center>
+
+<form class="container form-horizontal  form-border" id="formulario_propriedade" role="form" method="post" action="formulario_tecnico.php">
+<center><p><h1>Propriedade</h1></p></center>
 						<fieldset> 
 							<div class="form-group col-md-12 col-sm-12 col-xs-12 evapotranspiracao">
 								<label class="control-label color_black">Nome</label><input type="text" class="form-control" name='proj_nome' id="proj_nome" placeholder='Nome *'/>
@@ -30,10 +31,7 @@
 							</div>
 						</fieldset>
 						<center><button type="submit" id="cadastro_btn" class="btn">Salvar</button></center>
-</form>
-
-
-	
+</form>				
 
 
 

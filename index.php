@@ -33,7 +33,7 @@
 
 	<header>
 		<div class="logo">
-			<a href="index.php"><img src="img/logo.png" title="Magnetic" alt="Magnetic"/></a>
+			<a href="index.php"><img src="img/logo_branco_total.png" title="Magnetic" alt="Magnetic"/></a>
 		</div><!-- end logo -->
 
 		<div id="menu_icon"></div>

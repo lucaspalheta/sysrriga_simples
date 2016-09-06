@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+.iframe_div {
+	width: 100%;
+	margin:auto;
+	border: none;
+	overflow: hidden;
+	height: 410px;
+}
+
+.iframe_div center p {
+	font-size: 20px;
+}
+
+.iframe_div::-webkit-scrollbar {
+	display: none;
+}

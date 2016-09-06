@@ -23,6 +23,8 @@
 
 
 /*  Fonts  */
+@charset "UTF-8";
+
 @font-face {
     font-family: 'raleway-regular';
     src: url('../fonts/raleway-regular.eot');
@@ -130,6 +132,8 @@ h5, h6          { font-weight: bolder }
         overflow: hidden;
         z-index: 9999;
 		box-shadow: 1px 1px 20px #454545;
+		background-color: #6a9a2c;
+		color: white;
 		
     }
 
@@ -155,11 +159,12 @@ h5, h6          { font-weight: bolder }
         font-size: 14px;
         text-decoration: none;
         letter-spacing: 1px;
+		color: white;
     }
 
     header nav ul li a:hover,
     header nav ul li a.selected{
-        color: #969595;
+        color: white;
     }
 
     header .footer{

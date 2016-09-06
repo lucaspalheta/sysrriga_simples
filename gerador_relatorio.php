@@ -43,6 +43,9 @@ $busca_projeto = "SELECT * FROM dados_projeto WHERE id_projeto = $id_projeto2";
   $busca_cultura = "SELECT * FROM dados_cultura WHERE id_projeto = $id_projeto2";
   $result_cultura = $mysqli->query($busca_cultura);
   
+   /*Aspersor*/
+  $busca_aspersor = "SELECT * FROM dados_aspersor WHERE id_projeto = $id_projeto2";
+  $result_cultura = $mysqli->query($busca_cultura);
   
   /*Setando o fuso ´orário*/
 	date_default_timezone_set('America/Sao_Paulo');
@@ -125,10 +128,28 @@ $busca_projeto = "SELECT * FROM dados_projeto WHERE id_projeto = $id_projeto2";
 			</ul>
 		</div>
 		<center class=" remove-margin backgrund-laranja border-black-bottom border-all margin-all"><p>CÁLCULO DE DIMENSIONAMENTO AGRONÔMICO</p></center>
-		<div>
-		<?php echo  
-					print_r($result_projeto);
-				?>
+		<center class=" border-all margin-all cinza">
+		
+		<p>CARACTERÍSTICAS DO ASPERSOR</p>
+		
+		</center>
+		<div class="20porcento margin-all  remove-margin ">
+			<ul>
+				<li>Modelo</li>
+				<li>Vazão l/h</li>
+				<li>Pressão de Serviço</li>
+				<li>Diâmetro de Alcance</li>
+				<li class="correcao" id="ultimo">Área Molhada</li>
+			</ul>
+		</div>
+		<div class="20porcento margin-all remove-margin-top ">
+			<ul>
+				<li><?php echo $fila_cultura['cult_nome'] ?></li>
+				<li><?php echo $esp_fileiras. " x " .$esp_plantas ?></li>
+				<li><?php echo $area_planta ?></li>
+				<li><?php echo $area ?></li>
+				<li><?php echo $n_plantas?></li>
+			</ul>
 		</div>
 		
 	</div>

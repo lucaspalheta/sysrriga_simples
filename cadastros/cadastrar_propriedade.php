@@ -21,16 +21,19 @@
 								<label class="control-label color_black">Nome</label><input type="text" class="form-control" name='proj_nome' id="proj_nome" placeholder='Nome *'/>
 							</div>
 							<div class="form-group col-md-12 col-sm-12 col-xs-12 evapotranspiracao">
-								<label class="control-label color_black">Técnico Responsável</label><input type="text" class="form-control" name='proj_Tecnico_Responsavel' id="proj_Tecnico_Responsavel" placeholder='Técnico Responsável *'/>
+								<label class="control-label color_black">Endereço</label><input type="text" class="form-control" name='proj_Tecnico_Responsavel' id="proj_Tecnico_Responsavel" placeholder='Técnico Responsável *'/>
 							</div>
 							<div class="form-group col-md-12 col-sm-12 col-xs-12 evapotranspiracao">
-								<label class="control-label color_black">Nº CREA</label><input type="text" class="form-control" name='proj_CREA' id="proj_CREA" placeholder='Nº CREA *'/>
+								<label class="control-label color_black">CEP</label><input type="text" class="form-control" name='proj_CREA' id="proj_CREA" placeholder='Nº CREA *'/>
 							</div>
 							<div class="form-group col-md-12 col-sm-12 col-xs-12 evapotranspiracao">
-								<label class="control-label color_black">Proprietário</label><input type="text" class="form-control" name='proj_Proprietario' id="proj_Proprietario" placeholder='Proprietário *'>
+								<label class="control-label color_black">Cidade</label><input type="text" class="form-control" name='proj_CREA' id="proj_CREA" placeholder='Nº CREA *'/>
+							</div>
+							<div class="form-group col-md-12 col-sm-12 col-xs-12 evapotranspiracao">
+								<label class="control-label color_black">Estado</label><input type="text" class="form-control" name='proj_Proprietario' id="proj_Proprietario" placeholder='Proprietário *'>
 							</div>
 						</fieldset>
-						<center><button type="submit" id="cadastro_btn" class="btn">Salvar</button></center>
+						<center><button type="submit" id="cadastro_btn" class="btn">Cadastrar</button></center>
 </form>				
 
 

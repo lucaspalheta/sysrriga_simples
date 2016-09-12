@@ -12,7 +12,7 @@
 				rules:{
 					prod_nome:{
 						//será obrigatório (required) e terá tamanho mínimo (minLength)
-						required: true, minlength: 10
+						required: true, minlength: 5
 					},
 					prod_telefone:{	
 						required: true, digits: true
@@ -25,7 +25,7 @@
 			messages:{
 				prod_nome:{
 					required: "Digite seu nome.",
-					minLength: "O seu nome deve conter no mínimo 10 caracteres."
+					minLength: "O seu nome deve conter no mínimo 5 caracteres."
 				},
 				prod_telefone:{
 					required: "Digite seu telefone.",
@@ -41,6 +41,8 @@
 
 </script>
 
+
+
 <body>
 <form class="container form-horizontal  form-border" id="formProdutor"  method="post" action="../scripts_php/cadastro_produtor.php">
 <center><p><h1>Produtor</h1></p></center>
@@ -49,10 +51,10 @@
 								<label class="control-label color_black">Nome</label><input type="text" class="form-control" name='prod_nome' id="tec_nome" placeholder='Nome *'/>
 							</div>
 							<div class="form-group col-md-12 col-sm-12 col-xs-12 evapotranspiracao">
-								<label class="control-label color_black">telefone</label><input type="text" class="form-control" name='prod_telefone' id="prod_telefone" placeholder='Ex: Agrônomo'/>
+								<label class="control-label color_black">Telefone</label><input type="text" class="form-control" name='prod_telefone' id="prod_telefone" maxlength="15"/>
 							</div>
 							<div class="form-group col-md-12 col-sm-12 col-xs-12 evapotranspiracao">
-								<label class="control-label color_black">Email</label><input type="text" class="form-control" name='prod_email' id="prod_email" placeholder='Email *'>
+								<label class="control-label color_black">Email</label><input type="text" class="form-control" name='prod_email' id="prod_email" placeholder='Email'>
 							</div>
 							
 							
@@ -62,7 +64,6 @@
 
 
 	
-
 
 
 

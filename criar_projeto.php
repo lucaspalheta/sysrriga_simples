@@ -101,6 +101,25 @@
 			?>
 			</select>
 		</div>
+		<!--Escolha da Cultura-->
+		<div class="form-group col-md-4 col-sm-6 col-xs-6 evapotranspiracao">
+			<label class="control-label color_black">Cultura</label><select name="cultura" class="form-control">
+			<?php
+				/*Abrir banco de dados*/
+				include "IFPA_sysrriga_20160010019982000.inc";
+					
+				/*Busca e impressão*/
+				$result_cultura = mysql_query("SELECT nome FROM cultura");
+				while ($row = mysql_fetch_array($result_cultura, MYSQL_NUM)) {
+				$identificacao= $row[0];
+				?>				
+				<?php echo "<option value='".$identificacao."'>" .$identificacao."</option>";?>
+			<?php
+			}
+			mysql_free_result($result);
+			?>
+			</select>
+		</div>
 		<!--Escolha do Aspersor-->
 		<div class="form-group col-md-4 col-sm-6 col-xs-6 evapotranspiracao">
 			<label class="control-label color_black">Aspersor</label><select name="aspersor" class="form-control">
@@ -120,6 +139,18 @@
 			?>
 			</select>
 		</div>
+		<center><h3>Dados Adicionais</h3></center>
+		<!--Dados Adicionais-->
+		<div class="form-group col-md-4 col-sm-6 col-xs-6 evapotranspiracao">
+			<label class="control-label color_black">Evapotranspiração de Referência</label><input type="text" class="form-control" name='eto' id="eto" placeholder='mm por dia'/>
+		</div>	
+		<div class="form-group col-md-4 col-sm-6 col-xs-6 evapotranspiracao">
+			<label class="control-label color_black">Coeficiente de Cultivo</label><input type="text" class="form-control" name='kc' id="kc" placeholder='0 a 1'/>
+		</div>
+		<div class="form-group col-md-4 col-sm-6 col-xs-6 evapotranspiracao">
+			<label class="control-label color_black">Eficiencia do Sistema</label><input type="text" class="form-control" name='ef' id="ef" placeholder='0 a 100'/>
+		</div>
+		
 		
 		<center class="form-group col-md-12 col-sm-12 col-xs-12 evapotranspiracao"><button type="submit" id="cadastro_btn" class="btn">Cadastrar</button></center>
 	</form>	

@@ -48,7 +48,7 @@
 						
 						
 							<ul class="col-lg-12 lista-logado">
-								<a href="projeto.php"><li class=" col-lg-6 "><span class="glyphicon glyphicon-new" aria-hidden="true"></span>Novo Projeto</li></a>
+								<a href="index2.php"><li class=" col-lg-6 "><span class="glyphicon glyphicon-new" aria-hidden="true"></span>Novo Projeto</li></a>
 								<a href="relatorio.php"><li class=" col-lg-6"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>  Relatório</li></a>
 							</ul>
 							

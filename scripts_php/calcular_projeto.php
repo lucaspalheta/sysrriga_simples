@@ -105,6 +105,7 @@ include "../IFPA_sysrriga_20160010019982000.inc";
 	$eto = $_POST ["eto"];
 	$kc = $_POST ["kc"];
 	$ef = $_POST ["ef"];
+	$r_aspersor = $da_aspersor/2;
 	
 /*Cálculos*/
 
@@ -145,6 +146,88 @@ include "../IFPA_sysrriga_20160010019982000.inc";
 	/*Tempo de irrigação*/
 	$tempo_irrigacao = ($itn/$capacidade_por_hora);
 	
+	/*Comprimento das Linhas Principal, de derivação e laterais*/
+	$c = 1;
+	
+	if($c == 1){
+		
+		$principal=$comprimento_area-($r_aspersor);
+		$derivacao = ($largura_area-($r_aspersor));
+		if($principal<100){
+			$lateral = $comprimento_area/2;
+		}
+		if($principal>100 || $principal<200){
+			$var = $principal/80;/*Mudar o 80 por uma variável para permitir que o usuário escolha o tamanho médio da linha lateral*/
+			$var = floor($var);
+			$lateral = (($principal/$var)-($r_aspersor));
+		}
+	}else{};
+	
+	if($c == 0){
+		
+		$principal=$largura_area-($da_aspersor/2);
+		$derivacao = ($comprimento_area-($r_aspersor));
+		if($principal<100){
+			$lateral = $largura_area/2;
+		}
+		if($principal>100 || $principal<200){
+			$var = $principal/80;/*Mudar o 80 por uma variável para permitir que o usuário escolha o tamanho médio da linha lateral*/
+			$var = floor($var);
+			$lateral = (($principal/$var)-($r_aspersor));
+		}
+	};
+	
+	
+	/*Número Linhas Laterais e de Derivação e aspersores*/
+	
+	$num_derivacao = $principal/($lateral+($r_aspersor));
+	$num_derivacao = (floor($num_derivacao));
+	$lateral = ((($principal+($r_aspersor))/$num_derivacao)-($da_aspersor));
+	$principal = (($principal+$r_aspersor)-$lateral);
+	$dist_derivacao = (($principal+($r_aspersor))/$num_derivacao)*2;
+	$dist_derivacao_init = (($dist_derivacao-($da_aspersor))/2);
+	$num_lateral = $derivacao/$da_aspersor;
+	$num_lateral = floor($num_lateral);
+	$dis_lateral = $da_aspersor;
+	$num_aspersores_lateral = $lateral/$da_aspersor;
+	$num_aspersores_lateral = floor($num_aspersores_lateral);
+	$dis_aspersor = $da_aspersor;
+	$num_total_derivacao = $num_derivacao*2;
+	$num_total_lateral = $num_lateral*2;
+	$num_total_aspersores = ($num_total_derivacao*$num_total_lateral*$num_aspersores_lateral);
+	
+	/*Funcionamento*/
+	$num_derivacao_funci = 2;/*Colocar como um campo para o usuário escolher o numero de saidas ou calcular baseado no turno de rega*/
+	$num_lateral_funci = ($num_derivacao_funci * $num_lateral)*2;
+	
+	
+	
+	/*Cálculo de fator F*/
+	
+	$num_saidas_principal = 25;/*Colocar como um campo para o usuário escolher o numero de saidas ou calcular baseado no turno de rega*/
+	$num_saidas_derivacao = $num_lateral*2;/*Colocar como um campo para o usuário escolher o numero de saidas ou calcular baseado no turno de rega*/
+	$num_saidas_lateral = $num_aspersores_lateral;/*Colocar como um campo para o usuário escolher o numero de saidas ou calcular baseado no turno de rega*/
+	
+	$f_principal = (1/(1.852+1))+(1/(2*$num_saidas_principal))+((sqrt(0.852))/(6*(pow($num_saidas_principal,2)))); 
+	$f_derivacao = (1/(1.852+1))+(1/(2*$num_saidas_derivacao))+((sqrt(0.852))/(6*(pow($num_saidas_derivacao,2)))); 
+	$f_lateral = (1/(1.852+1))+(1/(2*$num_saidas_lateral))+((sqrt(0.852))/(6*(pow($num_saidas_lateral,2)))); 
+	
+	/*Cálculos de Vazão das Linhas*/
+	
+	
+	
+	/*Todas as vazõs estão e litros por hora*/
+	$vazao_lateral = $vazao_aspersor*$num_aspersores_lateral;
+	$vazao_derivacao = $vazao_lateral*$num_lateral;
+	$vazao_principal = $vazao_derivacao*$num_derivacao_funci;
+	
+	/*Todas as vazões estão em metros cubicos por segundo*/
+	$vazao_lateral = $vazao_lateral/3600000;
+	$vazao_derivacao = $vazao_lateral*$num_lateral;
+	$vazao_principal = $vazao_derivacao*$num_derivacao_funci;
+	
+	
+	
 	echo "Evapotranspiração de referencia:  $eto <br>";
 	echo "Evapotranspiração: $etc <br>";
 	echo "Coenficiente de cultivo: $kc <br>";
@@ -154,7 +237,20 @@ include "../IFPA_sysrriga_20160010019982000.inc";
 	echo "Consumo de água do projeto: ".($agua_total/1000)." metros³<br>";
 	echo "Capacidade de irrigação por hora: ".($capacidade_por_hora/1000)." metros³<br>";
 	echo "Tempo de Irrigação Necesário: $tempo_irrigacao <br>";
-	
-	
-	
+	echo "Principal: $principal <br>";
+	echo "Derivação: $derivacao <br>";
+	echo "Lateral: $lateral <br>";
+	echo "Número de Derivações: $num_derivacao <br>";
+	echo "Distancia entre Derivações: $dist_derivacao metros, sendo que a primeira derivação deve começar a ".$dist_derivacao_init." metros do inicio ada linha principal<br>";
+	echo "Número de Laterais: $num_lateral <br>";
+	echo "Distância das Laterais: $dis_lateral metros, sendo que a primeira lateral deve inicial a ".$r_aspersor." metros da linha principal. <br>";
+	echo "Número de aspersores por linha lateral: $num_aspersores_lateral <br>";
+	echo "Distância dos aspersores: $dis_aspersor metros, sendo que o primeiro aspersor deve iniciar a ".$r_aspersor." metros da linha de derivação. <br>";
+	echo "Número total de aspersores: $num_total_aspersores<br>";
+	echo "F da Linha Principal: $f_principal<br>";
+	echo "F da Linha Derivação: $f_derivacao<br>";
+	echo "F da Linha Derivação: $f_lateral<br>";
+	echo "Vazão da Linha Lateral: $vazao_lateral<br>";
+	echo "Vazão da Linha Derivação: $vazao_derivacao<br>";
+	echo "Vazão da Linha Principal: $vazao_principal<br>";
 ?>

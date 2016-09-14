@@ -21,7 +21,8 @@
 		
 		<map name="map" >
 			
-			<area shape="poly" coords="724,29,1033,34,1034,263,724,248," href="cadastros/cadastrar_area.php#formArea" target="janela"/>
+			<area shape="poly" coords="617,277,830,395,823,397,610,280," href="cadastros/cadastrar_tubulacao.php#formTubulacao" target="janela"/>
+			<area shape="poly" coords="634,398,541,339,484,301,421,253,376,213,354,193,434,186,504,181,575,178,647,177,710,177,760,179,822,182,875,188,945,196,994,203,1060,216,1114,228,1140,235,1103,242,1067,252,1035,264,995,283,962,300,919,328,893,347,858,373,829,399,633,397," href="cadastros/cadastrar_area.php#formArea" target="janela"/>
 			<area shape="poly" coords="11,18,100,11,104,74,13,93," href="cadastros/cadastrar_aspersor.php#formAspersor" target="janela"/>
 			<area shape="poly" coords="435,39,600,30,600,379,439,378," href="cadastros/cadastrar_cultura.php#formCultura" target="janela"/>
 			<area shape="poly" coords="219,90,384,90,391,331,215,331," href="cadastros/cadastrar_tecnico.php#formProdutor" target="janela"/>

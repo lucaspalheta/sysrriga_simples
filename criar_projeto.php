@@ -139,6 +139,25 @@
 			?>
 			</select>
 		</div>
+		<!--Escolha do Tubulacao Principal-->
+		<div class="form-group col-md-4 col-sm-6 col-xs-6 evapotranspiracao">
+			<label class="control-label color_black">Tubulação Principal</label><select name="tubulacao_principal" class="form-control">
+			<?php
+				/*Abrir banco de dados*/
+				include "IFPA_sysrriga_20160010019982000.inc";
+					
+				/*Busca e impressão*/
+				$result_tubulacao_principal = mysql_query("SELECT descricao FROM tubulacao");
+				while ($row = mysql_fetch_array($result_tubulacao_principal, MYSQL_NUM)) {
+				$identificacao= $row[0];
+				?>				
+				<?php echo "<option value='".$identificacao."'>" .$identificacao."</option>";?>
+			<?php
+			}
+			mysql_free_result($result);
+			?>
+			</select>
+		</div>
 		<center><h3>Dados Adicionais</h3></center>
 		<!--Dados Adicionais-->
 		<div class="form-group col-md-4 col-sm-6 col-xs-6 evapotranspiracao">

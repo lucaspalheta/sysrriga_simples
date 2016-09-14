@@ -10,6 +10,9 @@ include "../IFPA_sysrriga_20160010019982000.inc";
 	$area = $_POST ["area"];
 	$cultura = $_POST ["cultura"];
 	$aspersor = $_POST ["aspersor"];
+	$tubulacao_p = $_POST ["tubulacao_principal"];
+	$tubulacao_d = $_POST ["tubulacao_derivacao"];
+	$tubulacao_l = $_POST ["tubulacao_lateral"];
 	
 /*Buascando Valores*/
 
@@ -99,6 +102,52 @@ include "../IFPA_sysrriga_20160010019982000.inc";
 		$da_aspersor = $ln['da'];
 	
 	/*-------------------------------------------*/
+	/*Tubulação*/
+	/*Principal*/
+	$sql   = "SELECT *  FROM tubulacao WHERE descricao= '$tubulacao_p'";
+        $qr    = mysql_query($sql) or die(mysql_error());
+        $ln    = mysql_fetch_assoc($qr);
+           
+        $id_tubulacao_p = $ln['id_tubulacao'];
+		$descricao_tubulacao_p = $ln['descricao'];
+		$dn_tubulcacao_p = $ln['dn'];
+		$de_tubulacao_p = $ln['de'];
+		$espessura_tubulacao_p = $ln['espessura'];
+		$comprimento_tubulacao_p = $ln['comprimento'];
+	
+	/*-------------------------------------------*/
+	
+	/*Derivação*/
+	$sql   = "SELECT *  FROM tubulacao WHERE descricao= '$tubulacao_d'";
+        $qr    = mysql_query($sql) or die(mysql_error());
+        $ln    = mysql_fetch_assoc($qr);
+           
+        $id_tubulacao_d = $ln['id_tubulacao'];
+		$descricao_tubulacao_d = $ln['descricao'];
+		$dn_tubulcacao_d = $ln['dn'];
+		$de_tubulacao_d = $ln['de'];
+		$espessura_tubulacao_d = $ln['espessura'];
+		$comprimento_tubulacao_d = $ln['comprimento'];
+	
+	/*-------------------------------------------*/
+	
+	/*Lateral*/
+	$sql   = "SELECT *  FROM tubulacao WHERE descricao= '$tubulacao_l'";
+        $qr    = mysql_query($sql) or die(mysql_error());
+        $ln    = mysql_fetch_assoc($qr);
+           
+        $id_tubulacao_l = $ln['id_tubulacao'];
+		$descricao_tubulacao_l = $ln['descricao'];
+		$dn_tubulcacao_l = $ln['dn'];
+		$de_tubulacao_l = $ln['de'];
+		$espessura_tubulacao_l = $ln['espessura'];
+		$comprimento_tubulacao_l = $ln['comprimento'];
+	
+	/*-------------------------------------------*/
+	
+	
+	
+	
 	
 /*Variáveis Adicionais*/
 
@@ -225,6 +274,11 @@ include "../IFPA_sysrriga_20160010019982000.inc";
 	$vazao_lateral = $vazao_lateral/3600000;
 	$vazao_derivacao = $vazao_lateral*$num_lateral;
 	$vazao_principal = $vazao_derivacao*$num_derivacao_funci;
+	
+	
+	
+	/*Cálculos de Perda de carga*/
+	
 	
 	
 	

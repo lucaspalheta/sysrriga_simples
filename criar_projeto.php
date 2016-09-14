@@ -158,6 +158,44 @@
 			?>
 			</select>
 		</div>
+		<!--Escolha do Tubulacao Derivação-->
+		<div class="form-group col-md-4 col-sm-6 col-xs-6 evapotranspiracao">
+			<label class="control-label color_black">Tubulação Derivação</label><select name="tubulacao_derivacao" class="form-control">
+			<?php
+				/*Abrir banco de dados*/
+				include "IFPA_sysrriga_20160010019982000.inc";
+					
+				/*Busca e impressão*/
+				$result_tubulacao_derivacao = mysql_query("SELECT descricao FROM tubulacao");
+				while ($row = mysql_fetch_array($result_tubulacao_derivacao, MYSQL_NUM)) {
+				$identificacao= $row[0];
+				?>				
+				<?php echo "<option value='".$identificacao."'>" .$identificacao."</option>";?>
+			<?php
+			}
+			mysql_free_result($result);
+			?>
+			</select>
+		</div>
+		<!--Escolha do Tubulacao Lateral-->
+		<div class="form-group col-md-4 col-sm-6 col-xs-6 evapotranspiracao">
+			<label class="control-label color_black">Tubulação Lateral</label><select name="tubulacao_lateral" class="form-control">
+			<?php
+				/*Abrir banco de dados*/
+				include "IFPA_sysrriga_20160010019982000.inc";
+					
+				/*Busca e impressão*/
+				$result_tubulacao_lateral = mysql_query("SELECT descricao FROM tubulacao");
+				while ($row = mysql_fetch_array($result_tubulacao_lateral, MYSQL_NUM)) {
+				$identificacao= $row[0];
+				?>				
+				<?php echo "<option value='".$identificacao."'>" .$identificacao."</option>";?>
+			<?php
+			}
+			mysql_free_result($result);
+			?>
+			</select>
+		</div>
 		<center><h3>Dados Adicionais</h3></center>
 		<!--Dados Adicionais-->
 		<div class="form-group col-md-4 col-sm-6 col-xs-6 evapotranspiracao">

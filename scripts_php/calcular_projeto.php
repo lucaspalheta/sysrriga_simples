@@ -279,6 +279,65 @@ include "../IFPA_sysrriga_20160010019982000.inc";
 	
 	/*Cálculos de Perda de carga*/
 	
+	/*Diâmetro Interno das Tubulações*/
+	$diametro_interno_l= ($de_tubulacao_l-$espessura_tubulacao_l);
+	$diametro_interno_d= ($de_tubulacao_d-$espessura_tubulacao_d);
+	$diametro_interno_p= ($de_tubulacao_p-$espessura_tubulacao_p);
+	
+	
+	/*Cálculo das Perdas de Carga*/
+	
+	$rugosidade_l = 150;
+	$rugosidade_d = 150;
+	$rugosidade_p = 150;
+	
+	
+	$hf_lateral = (10.646*(pow($vazao_lateral,1.852))*(pow($rugosidade_l,-1.852))*($comprimento_tubulacao_l)*($f_lateral)*(pow(($diametro_interno_l/1000),-4.87)));
+	$hf_derivacao = (10.646*(pow($vazao_derivacao,1.852))*(pow($rugosidade_d,-1.852))*($comprimento_tubulacao_d)*($f_derivacao)*(pow(($diametro_interno_d/1000),-4.87)));
+	$hf_principal = (10.646*(pow($vazao_principal,1.852))*(pow($rugosidade_p,-1.852))*($comprimento_tubulacao_p)*($f_principal)*(pow(($diametro_interno_p/1000),-4.87)));
+	
+	
+	/*Cálculo de Velocidade de Fluxo Interno*/
+	
+	$velocidade_lateral = ($vazao_lateral/((pow(($diametro_interno_l/1000),2)/4)*3.14159265359));
+	$velocidade_derivacao = ($vazao_derivacao/((pow(($diametro_interno_d/1000),2)/4)*3.14159265359));
+	$velocidade_principal = ($vazao_principal/((pow(($diametro_interno_p/1000),2)/4)*3.14159265359));
+	
+	/*Bloco de Verificação das velocidades*/
+	
+	if($velocidade_lateral<1){
+		header("Location:../erros/erro_lateral_baixo.php");
+	}
+	if($velocidade_lateral>2){
+		header("Location:../erros/erro_lateral_alto.php");	
+	}
+	if($velocidade_derivacao<1){
+		header("Location:../erros/erro_derivacao_baixo.php");	
+	}
+	if($velocidade_derivacao>2){
+		header("Location:../erros/erro_derivacao_alto.php");	
+	}
+	if($velocidade_principál<1){
+		header("Location:../erros/erro_principal_baixo.php");	
+	}
+	if($velocidade_principál>2){
+		header("Location:../erros/erro_principal_alto.php");	
+	}
+	
+	
+	
+	/*-----------Aqui está o momento de modificação do projeto, verificar uma lógica para que o usuário possa modificar o diâmetro da tubulação para que a velocidade seja mantida entre 1 e 2 m/s²*/
+	
+	
+	/*Cálculo de Altura manométrica*/
+	
+	$h_manometrica = ($ps_aspersor+$hf_derivacao+$hf_lateral+$hf_principal);
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -307,4 +366,15 @@ include "../IFPA_sysrriga_20160010019982000.inc";
 	echo "Vazão da Linha Lateral: $vazao_lateral<br>";
 	echo "Vazão da Linha Derivação: $vazao_derivacao<br>";
 	echo "Vazão da Linha Principal: $vazao_principal<br>";
+	echo "Diâmetro Interno da Principal: $diametro_interno_l<br>";
+	echo "Diâmetro Interno da Derivação: $diametro_interno_d<br>";
+	echo "Diâmetro Interno da Principal: $diametro_interno_p<br>";
+	echo "Perda de Carga da Lateral: $hf_lateral<br>";
+	echo "Perda de Carga da Derivação: $hf_derivacao<br>";
+	echo "Perda de Carga da Principal: $hf_principal<br>";
+	echo "Velocidade da lateral: $velocidade_lateral<br>";
+	echo "Velocidade da Derivação: $velocidade_derivacao<br>";
+	echo "Velocidade da Principal: $velocidade_principal<br>";
+	echo "Altura Manométrica: $h_manometrica<br>";
+	
 ?>

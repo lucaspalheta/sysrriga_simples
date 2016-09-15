@@ -35,7 +35,7 @@
 				<iframe src="cadastros/inicial.php" class="iframe_div" name="janela"></iframe>
 							
 								
-		<center><a href="criar_projeto.php"><h3>Criar Projeto</h3></a></center>				
+		<center btn><a class="" href="criar_projeto.php"><h3>Criar Projeto</h3></a></center>				
 	</section><!-- end main -->
 	
 	
